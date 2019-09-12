@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "testIndMLResoo/lambda.js",
-        "code": "let AWS = require('aws-sdk');\nconst ml = new AWS.MachineLearning();\n\nexports.handler = function(event, context, callback) {\n    ml.predict({\n    \t\tMLModelId: 'ml-Gb8QvgzHy4K',\n    \t\tPredictEndpoint: 'https://realtime.machinelearning.us-east-1.amazonaws.com',\n    \t\tRecord: {\n    \t100:1992\n    \t\t}\n    \t}, function (err, data) {\n    \t\tif (err) console.log(err, err.stack); \n            // an error occurred\n    \t\telse console.log(data);    \n            console.log(\"sucessss\");    // successful response\n    \t});\n    \n    callback(null, {\"message\": \"Successfully executed\"});\n}",
+        "code": "let AWS = require('aws-sdk');\nconst ml = new AWS.MachineLearning();\n\nexports.handler = function (event, context, callback) {\n    ml.predict({\n        MLModelId: 'ml-Gb8QvgzHy4K',\n        PredictEndpoint: 'https://realtime.machinelearning.us-east-1.amazonaws.com',\n        Record: {\n            a: 1992\n        }\n    }, function (err, data) {\n        if (err) console.log(err, err.stack);\n        // an error occurred\n        else console.log(data);\n        console.log(\"sucessss\");    // successful response\n    });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
         "config": {
           "runtime": "nodejs8.10",
           "handler": "handler",
@@ -30,7 +30,16 @@
           "memory": 128,
           "layers": []
         },
-        "triggers": []
+        "triggers": [],
+        "testCases": {
+          "cc80e183-aab4-49f6-9867-fbf9b6debc4e": {
+            "id": "cc80e183-aab4-49f6-9867-fbf9b6debc4e",
+            "name": "Test event",
+            "functionId": "0fe9f6e6-410a-4233-a1da-7b3cd32e8caa",
+            "event": "{\"key1\": \"value1\", \"key2\": \"value2\", \"key3\": \"value3\"}",
+            "eventTemplate": "hello-world"
+          }
+        }
       }
     },
     "rootNode": "05cb7be3-c8de-4b6e-b244-57916f86ce77",
@@ -81,7 +90,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1568277559263
+    "lastSave": 1568277679431
   },
   "VCS_STATE": {
     "provider": "GitHub",
